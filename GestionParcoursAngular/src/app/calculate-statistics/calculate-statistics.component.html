@@ -1,0 +1,33 @@
+<div>
+  <h3>Calculate Statistics</h3>
+  <form (submit)="calculateAverageTime(); $event.preventDefault();">
+    <label for="personneId">Person ID:</label>
+    <input id="personneId" type="number" [(ngModel)]="personneId" name="personneId" required />
+    <br>
+    <label for="parcoursId">Course ID:</label>
+    <input id="parcoursId" type="number" [(ngModel)]="parcoursId" name="parcoursId" required />
+    <br>
+    <label for="type">Type:</label>
+    <input id="type" type="text" [(ngModel)]="type" name="type" required placeholder="marche or course" />
+
+    <button type="submit">Calculate Statistics</button>
+  </form>
+
+  @if(averageTimeResult){
+    <div>
+      <h4>Results:</h4>
+      <p>Average Time: {{ averageTimeResult.averageTime }} minutes</p>
+      <p>Standard Time: {{ averageTimeResult.standardTime }} minutes</p>
+      @if(averageTimeResult.isBetterThanStandard){
+        <p>Better than standard time!</p>
+      }
+      @if(!averageTimeResult.isBetterThanStandard){
+        <p>Not better than standard time.</p>
+      }
+    </div>
+  }
+
+  @if(errorMessage){
+    <p style="color: red">{{ errorMessage }}</p>
+  }
+</div>

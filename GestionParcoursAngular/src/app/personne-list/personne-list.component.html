@@ -1,0 +1,12 @@
+<div>
+  <h2>List of users</h2>
+  <ul>
+    @for(personne of personnes; track $index) {
+      <li>{{personne.id}} - {{personne.prenom}} {{personne.nom}}</li>
+    }
+  </ul>
+</div>
+<hr>
+<app-add-personne (addedPersonne)="onPersonneAdded($event)"></app-add-personne>
+<hr>
+<app-calculate-statistics></app-calculate-statistics>

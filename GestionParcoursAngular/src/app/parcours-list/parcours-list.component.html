@@ -1,0 +1,31 @@
+<div>
+  <h2>List of courses</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Standard walk time</th>
+      <th>Standard run time</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for(parcours of parcours; track $index; let e = $even; let o = $odd) {
+        <tr [ngClass]="{'even': e, 'odd': o}">
+          <td>{{parcours.id}}</td>
+          <td>{{parcours.nom}}</td>
+          <td>{{parcours.tempsMarcheMinutes}} minutes</td>
+          <td>{{parcours.tempsCourseMinutes}} minutes</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<app-add-parcours (addedParcours)="onParcoursAdded($event)"></app-add-parcours>
+<app-add-session></app-add-session>
+
+<!--
+<nav>
+  <a routerLinkActive="active" routerLink="/parcours-list/add-parcours">Add a course</a>
+  <a routerLinkActive="active" routerLink="/parcours-list/add-session">Add a session</a>
+</nav>-->

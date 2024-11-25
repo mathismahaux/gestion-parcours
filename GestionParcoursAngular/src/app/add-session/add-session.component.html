@@ -1,0 +1,27 @@
+<form #formComponent="ngForm" (ngSubmit)="addSession(); formComponent.resetForm()">
+  <h3>Add a session</h3>
+  <label for="personne">Select Person:</label>
+  <select id="personne" [(ngModel)]="selectedPersonneId" name="personne" required>
+    @for(personne of personnes; track $index) {
+      <option [value]="personne.id">{{ personne.prenom }} {{personne.nom}}</option>
+    }
+  </select>
+  <br>
+  <label for="parcours">Select Course:</label>
+  <select id="parcours" [(ngModel)]="selectedParcoursId" name="parcours" required>
+    @for(parcours of parcours; track $index) {
+      <option [value]="parcours.id">{{ parcours.nom }}</option>
+    }
+  </select>
+  <br>
+  <label for="type">Type: </label>
+  <select id="type" [(ngModel)]="enteredType" name="type" required>
+    <option value="marche">Marche</option>
+    <option value="course">Course</option>
+  </select>
+  <br>
+  <label for="timeMinutes">Time in minutes: </label>
+  <input type="number" [(ngModel)]="enteredTempsMinutes" name="timeMinutes" id="timeMinutes" required />
+  <br>
+  <button type="submit">Add Session</button>
+</form>
