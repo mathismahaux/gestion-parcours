@@ -3,6 +3,7 @@ import {PersonneService} from '../services/personne.service';
 import {Personne} from '../personne';
 import {AddPersonneComponent} from '../add-personne/add-personne.component';
 import {CalculateStatisticsComponent} from '../calculate-statistics/calculate-statistics.component';
+import {PersonneSharedService} from '../services/personne-shared.service';
 
 @Component({
   selector: 'app-personne-list',
@@ -17,8 +18,10 @@ import {CalculateStatisticsComponent} from '../calculate-statistics/calculate-st
 export class PersonneListComponent implements OnInit {
   personnes: Personne[] = []
 
-  constructor(private personneService: PersonneService) {
-  }
+  constructor(
+    private personneService: PersonneService,
+    private sharedService: PersonneSharedService
+  ) {}
 
   ngOnInit(): void {
     this.loadPersonnes();
@@ -32,5 +35,6 @@ export class PersonneListComponent implements OnInit {
 
   onPersonneAdded(newPersonne: Personne) : void {
     this.personnes.push(newPersonne);
+    this.sharedService.notifyPersonneAdded();
   }
 }

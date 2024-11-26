@@ -1,27 +1,73 @@
-<form #formComponent="ngForm" (ngSubmit)="addSession(); formComponent.resetForm()">
+<form [formGroup]="addSessionForm" (ngSubmit)="onSubmit(); resetForm()">
+
   <h3>Add a session</h3>
+
   <label for="personne">Select Person:</label>
-  <select id="personne" [(ngModel)]="selectedPersonneId" name="personne" required>
+  <select id="personne" formControlName="personne" required>
     @for(personne of personnes; track $index) {
-      <option [value]="personne.id">{{ personne.prenom }} {{personne.nom}}</option>
+      <option [value]="personne.id">
+        {{ personne.prenom }} {{ personne.nom }}
+      </option>
     }
   </select>
+  @if(addSessionForm.get('personne')?.invalid && addSessionForm.get('personne')?.touched) {
+    <div class="error-message">
+      Person is required.
+    </div>
+  }
+
   <br>
+
   <label for="parcours">Select Course:</label>
-  <select id="parcours" [(ngModel)]="selectedParcoursId" name="parcours" required>
-    @for(parcours of parcours; track $index) {
-      <option [value]="parcours.id">{{ parcours.nom }}</option>
+  <select id="parcours" formControlName="parcours" required>
+    @for(parcours of parcoursInput; track $index) {
+      <option [value]="parcours.id">
+        {{ parcours.nom }}
+      </option>
     }
   </select>
+  @if(addSessionForm.get('parcours')?.invalid && addSessionForm.get('parcours')?.touched) {
+    <div class="error-message">
+      Course is required.
+    </div>
+  }
+
   <br>
+
   <label for="type">Type: </label>
-  <select id="type" [(ngModel)]="enteredType" name="type" required>
+  <select id="type" formControlName="type" required>
     <option value="marche">Marche</option>
     <option value="course">Course</option>
   </select>
+  @if(addSessionForm.get('type')?.invalid && addSessionForm.get('type')?.touched) {
+    <div class="error-message">
+      Type is required.
+    </div>
+  }
+
   <br>
+
   <label for="timeMinutes">Time in minutes: </label>
-  <input type="number" [(ngModel)]="enteredTempsMinutes" name="timeMinutes" id="timeMinutes" required />
+  <input type="number" id="timeMinutes" formControlName="timeMinutes" required />
+  @if(addSessionForm.get('timeMinutes')?.invalid && addSessionForm.get('timeMinutes')?.touched) {
+    <div class="error-message">
+      Time is required and should be of at least 1 minute.
+    </div>
+  }
+
   <br>
-  <button type="submit">Add Session</button>
+
+  <button type="submit" [disabled]="addSessionForm.invalid">Add Session</button>
 </form>
+
+@if(successMessage) {
+  <div class="success-message">
+    {{ successMessage }}
+  </div>
+}
+
+@if(errorMessage) {
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+}

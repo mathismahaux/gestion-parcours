@@ -1,15 +1,38 @@
-<form #formComponent="ngForm" (ngSubmit)="addParcours(); formComponent.resetForm()">
+<form [formGroup]="addParcoursForm" (ngSubmit)="onSubmit(); resetForm()">
+
   <h3>Add a course</h3>
+
   <label for="name">Name: </label>
-  <input type="text" [(ngModel)]="parcours.nom" name="name" id="name" required />
+  <input type="text" id="name" formControlName="nom"/>
+  @if(addParcoursForm.get('nom')?.invalid && addParcoursForm.get('nom')?.touched) {
+    <div class="error-message">
+      Name is required and should be at least 5 characters.
+    </div>
+  }
+
   <br>
+
   <label for="walkTimeMin">Standard walk time in minutes: </label>
-  <input type="number" [(ngModel)]="parcours.tempsMarcheMinutes" name="walkTimeMin" id="walkTimeMin" required />
+  <input type="number" id="walkTimeMin" formControlName="tempsMarcheMinutes"/>
+  @if(addParcoursForm.get('tempsMarcheMinutes')?.invalid && addParcoursForm.get('tempsMarcheMinutes')?.touched) {
+    <div class="error-message">
+      Walk time is required and should be of at least 1 minute.
+    </div>
+  }
+
   <br>
+
   <label for="runTimeMin">Standard run time in minutes: </label>
-  <input type="number" [(ngModel)]="parcours.tempsCourseMinutes" name="runTimeMin" id="runTimeMin" required />
+  <input type="number" id="runTimeMin" formControlName="tempsCourseMinutes"/>
+  @if(addParcoursForm.get('tempsCourseMinutes')?.invalid && addParcoursForm.get('tempsCourseMinutes')?.touched) {
+    <div class="error-message">
+      Run time is required and should be of at least 1 minute.
+    </div>
+  }
+
   <br>
-  <button type="submit">Add Course</button>
+
+  <button type="submit" [disabled]="addParcoursForm.invalid">Add Course</button>
 </form>
 
 @if(successMessage) {
@@ -23,3 +46,4 @@
     {{ errorMessage }}
   </div>
 }
+

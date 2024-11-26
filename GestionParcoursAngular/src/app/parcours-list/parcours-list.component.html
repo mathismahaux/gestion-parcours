@@ -22,10 +22,4 @@
   </table>
 </div>
 <app-add-parcours (addedParcours)="onParcoursAdded($event)"></app-add-parcours>
-<app-add-session></app-add-session>
-
-<!--
-<nav>
-  <a routerLinkActive="active" routerLink="/parcours-list/add-parcours">Add a course</a>
-  <a routerLinkActive="active" routerLink="/parcours-list/add-session">Add a session</a>
-</nav>-->
+<app-add-session [parcoursInput]="parcours"></app-add-session>
