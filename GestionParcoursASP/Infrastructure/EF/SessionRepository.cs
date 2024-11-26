@@ -1,3 +1,4 @@
+using Domain;
 using Infrastructure.EF.DbEntities;
 using Microsoft.EntityFrameworkCore;
 

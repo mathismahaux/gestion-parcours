@@ -1,3 +1,4 @@
+using Domain;
 using Infrastructure.EF.DbEntities;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,5 +28,11 @@ public class PersonneRepository : IPersonneRepository
         _context.Personnes.Add(personne);
         await _context.SaveChangesAsync();
         return personne;
+    }
+    
+    public async Task<bool> PersonExists(string nom, string prenom)
+    {
+        return await _context.Personnes
+            .AnyAsync(p => p.Nom == nom && p.Prenom == prenom);
     }
 }

@@ -30,7 +30,7 @@ export class AddParcoursComponent {
   errorMessage: string = '';
 
   constructor(
-    private apiService: ParcoursService,
+    private parcoursService: ParcoursService,
     private fb: FormBuilder
   ) {
     this.addParcoursForm = this.fb.group({
@@ -48,7 +48,7 @@ export class AddParcoursComponent {
     if (this.addParcoursForm.valid) {
       const formValues = this.addParcoursForm.value;
 
-      this.apiService.addParcours(formValues).subscribe({
+      this.parcoursService.addParcours(formValues).subscribe({
         next: (result) => {
           this.successMessage = 'Course added successfully!';
           this.addedParcours.emit(result);

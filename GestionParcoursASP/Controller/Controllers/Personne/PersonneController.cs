@@ -26,7 +26,7 @@ public class PersonneController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<DtoOutputPersonne>> Create(DtoInputPersonne dto)
+    public async Task<ActionResult<DtoOutputPersonne>> Create([FromBody] DtoInputPersonne dto)
     {
         var result = await _useCaseCreatePersonne.Execute(dto);
         return Ok(result);

@@ -1,4 +1,4 @@
-export interface DtoOutputAverageTime {
+export interface Stats {
   parcoursId: number;
   type: string;
   averageTime: number;

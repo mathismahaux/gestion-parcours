@@ -1,10 +1,38 @@
-<h3>Add a person</h3>
-<form #formComponent="ngForm" (ngSubmit)="addPersonne(); formComponent.resetForm()">
-  <label for="name">Name: </label>
-  <input type="text" [(ngModel)]="personne.nom" name="name" id="name" required />
+<form [formGroup]="addPersonForm" (ngSubmit)="onSubmit(); resetForm()">
+
+  <h3>Add a Person</h3>
+
+  <label for="firstName">First name: </label>
+  <input type="text" id="firstName" formControlName="prenom"/>
+  @if(addPersonForm.get('prenom')?.invalid && addPersonForm.get('prenom')?.touched) {
+    <div class="error-message">
+      First name is required, should be at least 2 characters and must not contain numbers.
+    </div>
+  }
+
   <br>
-  <label for="surname">Prenom: </label>
-  <input type="text" [(ngModel)]="personne.prenom" name="surname" id="surname" required />
-  <br>
-  <button type="submit">Add Person</button>
+
+  <label for="name">Last name: </label>
+  <input type="text" id="name" formControlName="nom"/>
+  @if(addPersonForm.get('nom')?.invalid && addPersonForm.get('nom')?.touched) {
+    <div class="error-message">
+      Name is required, should be at least 2 characters and must not contain numbers.
+    </div>
+  }
+
+  <button type="submit" [disabled]="addPersonForm.invalid">Add Person</button>
 </form>
+
+@if(successMessage) {
+  <div class="success-message">
+    {{ successMessage }}
+  </div>
+}
+
+@if(errorMessage) {
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+}
+
+

@@ -6,7 +6,7 @@
   <input type="text" id="name" formControlName="nom"/>
   @if(addParcoursForm.get('nom')?.invalid && addParcoursForm.get('nom')?.touched) {
     <div class="error-message">
-      Name is required and should be at least 5 characters.
+      Name is required, should be at least 5 characters and must not contain numbers.
     </div>
   }
 

@@ -3,7 +3,6 @@ using Application.UseCases.Personne.DTOs;
 using Application.UseCases.Session.DTOs;
 using AutoMapper;
 using Domain;
-using Infrastructure.EF;
 using Infrastructure.EF.DbEntities;
 
 namespace Application;
@@ -20,6 +19,7 @@ public class ProfileMapper : Profile
         CreateMap<Parcours, DtoOutputParcours>();
         CreateMap<DbParcours, DtoOutputParcours>();
         CreateMap<DbParcours, Parcours>();
+        CreateMap<Parcours, DbParcours>();
         CreateMap<DtoInputParcours, Parcours>();
         
         CreateMap<Session, DtoOutputSession>();

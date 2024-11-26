@@ -2,6 +2,7 @@ using Application;
 using Application.UseCases.Parcours;
 using Application.UseCases.Personne;
 using Application.UseCases.Session;
+using Domain;
 using Infrastructure.EF;
 using Infrastructure.EF.DbEntities;
 using Microsoft.EntityFrameworkCore;

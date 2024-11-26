@@ -1,33 +1,77 @@
-<div>
+<form [formGroup]="calculateStatsForm" (ngSubmit)="onSubmit(); resetForm()">
+
   <h3>Calculate Statistics</h3>
-  <form (submit)="calculateAverageTime(); $event.preventDefault();">
-    <label for="personneId">Person ID:</label>
-    <input id="personneId" type="number" [(ngModel)]="personneId" name="personneId" required />
-    <br>
-    <label for="parcoursId">Course ID:</label>
-    <input id="parcoursId" type="number" [(ngModel)]="parcoursId" name="parcoursId" required />
-    <br>
-    <label for="type">Type:</label>
-    <input id="type" type="text" [(ngModel)]="type" name="type" required placeholder="marche or course" />
 
-    <button type="submit">Calculate Statistics</button>
-  </form>
-
-  @if(averageTimeResult){
-    <div>
-      <h4>Results:</h4>
-      <p>Average Time: {{ averageTimeResult.averageTime }} minutes</p>
-      <p>Standard Time: {{ averageTimeResult.standardTime }} minutes</p>
-      @if(averageTimeResult.isBetterThanStandard){
-        <p>Better than standard time!</p>
-      }
-      @if(!averageTimeResult.isBetterThanStandard){
-        <p>Not better than standard time.</p>
-      }
+  <label for="personne">Select Person:</label>
+  <select id="personne" formControlName="personne" required>
+    @for(personne of personnes; track $index) {
+      <option [value]="personne.id">
+        {{ personne.prenom }} {{ personne.nom }}
+      </option>
+    }
+  </select>
+  @if(calculateStatsForm.get('personne')?.invalid && calculateStatsForm.get('personne')?.touched) {
+    <div class="error-message">
+      Person is required.
     </div>
   }
 
-  @if(errorMessage){
-    <p style="color: red">{{ errorMessage }}</p>
+  <br>
+
+  <label for="parcours">Select Course:</label>
+  <select id="parcours" formControlName="parcours" required>
+    @for(parcours of parcours; track $index) {
+      <option [value]="parcours.id">
+        {{ parcours.nom }}
+      </option>
+    }
+  </select>
+  @if(calculateStatsForm.get('parcours')?.invalid && calculateStatsForm.get('parcours')?.touched) {
+    <div class="error-message">
+      Course is required.
+    </div>
   }
-</div>
+
+  <br>
+
+  <label for="type">Type: </label>
+  <select id="type" formControlName="type" required>
+    <option value="marche">Marche</option>
+    <option value="course">Course</option>
+  </select>
+  @if(calculateStatsForm.get('type')?.invalid && calculateStatsForm.get('type')?.touched) {
+    <div class="error-message">
+      Type is required.
+    </div>
+  }
+
+  <br>
+
+  <button type="submit" [disabled]="calculateStatsForm.invalid">Calculate statistics</button>
+</form>
+
+@if(successMessage) {
+  <div class="success-message">
+    {{ successMessage }}
+  </div>
+}
+
+@if(errorMessage) {
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+}
+
+@if(result){
+  <div class="results">
+    <h4>Results:</h4>
+    <p>Average Time: {{ result.averageTime }} minutes</p>
+    <p>Standard Time: {{ result.standardTime }} minutes</p>
+    @if(result.isBetterThanStandard){
+      <p>Better than standard time!</p>
+    }
+    @if(!result.isBetterThanStandard){
+      <p>Not better than standard time...</p>
+    }
+  </div>
+}

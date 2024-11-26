@@ -94,9 +94,6 @@
             "projectReferences": {
               "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Application\\Application.csproj": {
                 "projectPath": "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Application\\Application.csproj"
-              },
-              "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -217,7 +214,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Domain\\Domain.csproj": {
+                "projectPath": "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Domain\\Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

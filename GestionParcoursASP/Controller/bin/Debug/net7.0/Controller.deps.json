@@ -9,7 +9,6 @@
       "Controller/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
-          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.20",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
@@ -590,6 +589,7 @@
       },
       "Infrastructure/1.0.0": {
         "dependencies": {
+          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.20"
         },

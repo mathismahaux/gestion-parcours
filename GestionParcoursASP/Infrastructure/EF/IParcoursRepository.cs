@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Domain;
 using Infrastructure.EF.DbEntities;
 
 namespace Infrastructure.EF;

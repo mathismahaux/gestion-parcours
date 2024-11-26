@@ -1,4 +1,5 @@
 using Application.UseCases.Session.DTOs;
+using Domain;
 using Infrastructure.EF;
 
 namespace Application.UseCases.Session;

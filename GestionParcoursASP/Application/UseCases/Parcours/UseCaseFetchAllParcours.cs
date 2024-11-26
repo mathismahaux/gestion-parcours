@@ -1,6 +1,7 @@
 using Application.UseCases.Parcours.DTOs;
 using Application.UseCases.Utils;
 using AutoMapper;
+using Domain;
 using Infrastructure.EF;
 
 namespace Application.UseCases.Parcours;

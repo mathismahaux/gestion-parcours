@@ -6,6 +6,8 @@ import {AddPersonneComponent} from '../add-personne/add-personne.component';
 import {AddSessionComponent} from '../add-session/add-session.component';
 import {NgClass} from '@angular/common';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Personne} from '../personne';
+import {PersonneService} from '../services/personne.service';
 
 @Component({
   selector: 'app-parcours-list',
@@ -24,16 +26,27 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 })
 export class ParcoursListComponent implements  OnInit {
   parcours: Parcours[] = []
+  personnes: Personne[] = []
 
-  constructor(private apiService: ParcoursService) {
-  }
+  constructor(
+    private parcoursService: ParcoursService,
+    private personneService: PersonneService
+  ) {}
 
   ngOnInit(): void {
     this.loadParcours();
+    this.loadPersonnes();
+  }
+
+  private loadPersonnes() {
+    this.personneService.getAllPersonnes().subscribe((data: Personne[]) => {
+      console.log(data);
+      this.personnes = data;
+    });
   }
 
   private loadParcours() {
-    this.apiService.getAllParcours().subscribe((data: Parcours[]) => {
+    this.parcoursService.getAllParcours().subscribe((data: Parcours[]) => {
       console.log(data);
       this.parcours = data;
     });

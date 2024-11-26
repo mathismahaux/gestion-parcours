@@ -23,10 +23,10 @@ import {AddParcoursComponent} from '../add-parcours/add-parcours.component';
 })
 export class AddSessionComponent implements OnInit {
   @Input() parcoursInput: Parcours[] = [];
+  @Input() personnesInput!: Personne[];
   @Output() addedSession = new EventEmitter<Session>();
 
   addSessionForm: FormGroup;
-  personnes: Personne[] = [];
   successMessage: string = '';
   errorMessage: string= '';
 
@@ -51,7 +51,7 @@ export class AddSessionComponent implements OnInit {
 
   loadPersonnes(): void {
     this.personneService.getAllPersonnes().subscribe((data: Personne[]) => {
-      this.personnes = data;
+      this.personnesInput = data;
     })
   }
 
@@ -75,7 +75,6 @@ export class AddSessionComponent implements OnInit {
         next: () => {
           this.successMessage = 'Session added successfully!';
           this.addedSession.emit();
-
           setTimeout(() => {
             this.successMessage = '';
           }, 5000);

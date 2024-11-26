@@ -1,12 +1,23 @@
 <div>
-  <h2>List of users</h2>
-  <ul>
-    @for(personne of personnes; track $index) {
-      <li>{{personne.id}} - {{personne.prenom}} {{personne.nom}}</li>
-    }
-  </ul>
+  <h2>List of Persons</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for(personne of personnes; track $index; let e = $even; let o = $odd) {
+        <tr [ngClass]="{'even': e, 'odd': o}">
+          <td>{{personne.id}}</td>
+          <td>{{personne.prenom}}</td>
+          <td>{{personne.nom}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>
-<hr>
 <app-add-personne (addedPersonne)="onPersonneAdded($event)"></app-add-personne>
-<hr>
 <app-calculate-statistics></app-calculate-statistics>

@@ -33,7 +33,7 @@ export class SessionService {
     return this.http.post<Session>(this.apiUrl, session, httpOptions);
   }
 
-  getAverageTime(personneId: number, parcoursId: number, type: string): Observable<DtoOutputAverageTime> {
+  getStats(personneId: number, parcoursId: number, type: string): Observable<DtoOutputAverageTime> {
     const params = new HttpParams()
       .set('personneId', personneId)
       .set('parcoursId', parcoursId)

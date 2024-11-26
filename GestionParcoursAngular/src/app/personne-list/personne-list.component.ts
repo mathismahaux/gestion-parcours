@@ -3,14 +3,15 @@ import {PersonneService} from '../services/personne.service';
 import {Personne} from '../personne';
 import {AddPersonneComponent} from '../add-personne/add-personne.component';
 import {CalculateStatisticsComponent} from '../calculate-statistics/calculate-statistics.component';
-import {PersonneSharedService} from '../services/personne-shared.service';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-personne-list',
   standalone: true,
   imports: [
     AddPersonneComponent,
-    CalculateStatisticsComponent
+    CalculateStatisticsComponent,
+    NgClass
   ],
   templateUrl: './personne-list.component.html',
   styleUrl: './personne-list.component.css'
@@ -20,7 +21,6 @@ export class PersonneListComponent implements OnInit {
 
   constructor(
     private personneService: PersonneService,
-    private sharedService: PersonneSharedService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +35,5 @@ export class PersonneListComponent implements OnInit {
 
   onPersonneAdded(newPersonne: Personne) : void {
     this.personnes.push(newPersonne);
-    this.sharedService.notifyPersonneAdded();
   }
 }

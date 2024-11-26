@@ -144,7 +144,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Domain\\Domain.csproj": {
+                "projectPath": "M:\\ecole\\2024-2025\\TI\\GestionParcours\\GestionParcoursASP\\Domain\\Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

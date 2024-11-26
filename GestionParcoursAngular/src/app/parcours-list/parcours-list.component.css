@@ -19,13 +19,13 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 0 auto;
+  font-family: Arial, sans-serif;
+
 }
 
 table thead {
   background-color: #4CAF50;
   color: white;
-  font-family: Arial, sans-serif;
-
 }
 
 table th {

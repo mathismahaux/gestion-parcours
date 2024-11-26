@@ -10,3 +10,6 @@ M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\obj\Debu
 M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
 M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\bin\Debug\net7.0\Domain.dll
+M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\bin\Debug\net7.0\Domain.pdb
+M:\ecole\2024-2025\TI\GestionParcours\GestionParcoursASP\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
