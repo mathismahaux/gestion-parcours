@@ -17,7 +17,7 @@ import {NgClass} from '@angular/common';
   styleUrl: './personne-list.component.css'
 })
 export class PersonneListComponent implements OnInit {
-  personnes: Personne[] = []
+  personnes: Personne[] = [];
 
   constructor(
     private personneService: PersonneService,
@@ -34,6 +34,8 @@ export class PersonneListComponent implements OnInit {
   }
 
   onPersonneAdded(newPersonne: Personne) : void {
-    this.personnes.push(newPersonne);
+    this.personnes = [...this.personnes, newPersonne];
+    //Non-reconnaissable par la détection de changements d'Angular
+    // this.personnes.push(newPersonne);
   }
 }

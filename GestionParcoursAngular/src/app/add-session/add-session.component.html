@@ -4,7 +4,7 @@
 
   <label for="personne">Select Person:</label>
   <select id="personne" formControlName="personne" required>
-    @for(personne of personnesInput; track $index) {
+    @for(personne of personnes; track $index) {
       <option [value]="personne.id">
         {{ personne.prenom }} {{ personne.nom }}
       </option>
@@ -20,7 +20,7 @@
 
   <label for="parcours">Select Course:</label>
   <select id="parcours" formControlName="parcours" required>
-    @for(parcours of parcoursInput; track $index) {
+    @for(parcours of parcours; track $index) {
       <option [value]="parcours.id">
         {{ parcours.nom }}
       </option>

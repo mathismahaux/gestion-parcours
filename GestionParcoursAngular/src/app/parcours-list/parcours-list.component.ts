@@ -53,6 +53,7 @@ export class ParcoursListComponent implements  OnInit {
   }
 
   onParcoursAdded(newParcours: Parcours) : void {
-    this.parcours.push(newParcours);
+    this.parcours = [...this.parcours, newParcours];
+    // this.parcours.push(newParcours);
   }
 }

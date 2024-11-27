@@ -41,4 +41,11 @@ export class SessionService {
 
     return this.http.get<DtoOutputAverageTime>(`${this.apiUrl}/average-time`, { params });
   }
+
+  getByPersonneId(personneId: number): Observable<Session[]> {
+    const params = new HttpParams()
+      .set('personneId', personneId);
+
+    return this.http.get<Session[]>(`${this.apiUrl}/get-by-person-id`, { params });
+  }
 }

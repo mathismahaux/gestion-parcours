@@ -33,4 +33,11 @@ public class SessionRepository : ISessionRepository
             .Where(s => s.PersonneId == personneId && s.ParcoursId == parcoursId && s.Type == type)
             .ToListAsync();
     }
+    
+    public async Task<IEnumerable<DbSession>> FetchByPersonne(int personneId)
+    {
+        return await _context.Sessions
+            .Where(s => s.PersonneId == personneId)
+            .ToListAsync();
+    }
 }

@@ -18,6 +18,52 @@
 
   <br>
 
+  <button type="submit" [disabled]="calculateStatsForm.invalid">View Sessions</button>
+</form>
+
+@if(searchResults.length > 0) {
+  <div class="results">
+    <h2>Search Results</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Course</th>
+        <th>Type</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(result of searchResults; track $index; let e = $even; let o = $odd) {
+          <tr [ngClass]="{'even': e, 'odd': o}">
+            <td>{{getParcoursName(result.parcoursId)}}</td>
+            <td>{{result.type}}</td>
+            <td>
+              <button (click)="getStats(result.personneId, result.parcoursId, result.type)">
+                Get Stats
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+
+@if(result){
+  <div class="results">
+    <h4>Results:</h4>
+    <p>Average Time: {{ result.averageTime }} minutes</p>
+    <p>Standard Time: {{ result.standardTime }} minutes</p>
+    @if(result.isBetterThanStandard){
+      <p>Better than standard time!</p>
+    }
+    @if(!result.isBetterThanStandard){
+      <p>Not better than standard time...</p>
+    }
+  </div>
+}
+
+<!--  <br>
+
   <label for="parcours">Select Course:</label>
   <select id="parcours" formControlName="parcours" required>
     @for(parcours of parcours; track $index) {
@@ -74,4 +120,4 @@
       <p>Not better than standard time...</p>
     }
   </div>
-}
+}-->

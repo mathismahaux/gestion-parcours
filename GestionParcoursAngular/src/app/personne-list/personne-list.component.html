@@ -19,5 +19,7 @@
     </tbody>
   </table>
 </div>
+<hr>
 <app-add-personne (addedPersonne)="onPersonneAdded($event)"></app-add-personne>
-<app-calculate-statistics></app-calculate-statistics>
+<hr>
+<app-calculate-statistics [personnes]="personnes"></app-calculate-statistics>

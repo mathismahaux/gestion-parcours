@@ -44,7 +44,7 @@ builder.Services.AddScoped<UseCaseCreateParcours>();
 
 builder.Services.AddScoped<UseCaseCreateSession>();
 builder.Services.AddScoped<UseCaseCalculateAverageTime>();
-
+builder.Services.AddScoped<UseCaseFetchByPersonneId>();
 
 var app = builder.Build();
 

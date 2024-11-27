@@ -22,8 +22,8 @@ import {AddParcoursComponent} from '../add-parcours/add-parcours.component';
   styleUrl: './add-session.component.css'
 })
 export class AddSessionComponent implements OnInit {
-  @Input() parcoursInput: Parcours[] = [];
-  @Input() personnesInput!: Personne[];
+  @Input() parcours: Parcours[] = [];
+  @Input() personnes: Personne[] = [];
   @Output() addedSession = new EventEmitter<Session>();
 
   addSessionForm: FormGroup;
@@ -51,13 +51,13 @@ export class AddSessionComponent implements OnInit {
 
   loadPersonnes(): void {
     this.personneService.getAllPersonnes().subscribe((data: Personne[]) => {
-      this.personnesInput = data;
+      this.personnes = data;
     })
   }
 
   loadParcours(): void {
     this.parcoursService.getAllParcours().subscribe((data: Parcours[]) => {
-      this.parcoursInput = data;
+      this.parcours = data;
     })
   }
 

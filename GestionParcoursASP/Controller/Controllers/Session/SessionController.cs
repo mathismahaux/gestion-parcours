@@ -10,11 +10,13 @@ public class SessionController: ControllerBase
 {
     private readonly UseCaseCreateSession _useCaseCreateSession;
     private readonly UseCaseCalculateAverageTime _useCaseCalculateAverageTime;
+    private readonly UseCaseFetchByPersonneId _useCaseFetchByPersonneId;
 
-    public SessionController(UseCaseCreateSession useCaseCreateSession, UseCaseCalculateAverageTime useCaseCalculateAverageTime)
+    public SessionController(UseCaseCreateSession useCaseCreateSession, UseCaseCalculateAverageTime useCaseCalculateAverageTime, UseCaseFetchByPersonneId useCaseFetchByPersonneId)
     {
         _useCaseCreateSession = useCaseCreateSession;
         _useCaseCalculateAverageTime = useCaseCalculateAverageTime;
+        _useCaseFetchByPersonneId = useCaseFetchByPersonneId;
     }
 
     [HttpPost]
@@ -32,6 +34,13 @@ public class SessionController: ControllerBase
         {
             return NotFound();
         }
+        return Ok(result);
+    }
+    
+    [HttpGet("get-by-person-id")]
+    public async Task<ActionResult<IEnumerable<DtoOutputSession>>> FetchByPersonneId(int personneId)
+    {
+        var result = await _useCaseFetchByPersonneId.Execute(personneId);
         return Ok(result);
     }
 }

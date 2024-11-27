@@ -1,7 +1,7 @@
 export interface Session {
   id?: number;
-  idPersonne: number;
-  idParcours: number;
+  personneId: number;
+  parcoursId: number;
   type: string;
   tempsMinutes: number;
 }
